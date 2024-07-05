@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Market Data</title>
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="coinData"></div>
+    <canvas id="coinChart" width="800" height="400"></canvas>
+
+    <script>
+        // Function to fetch market data
+        async function fetchMarketData(coinName) {
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinName}`);
+            const data = await response.json();
+            return data;
+        }
+
+        // Function to fetch market chart data
+        async function fetchMarketChartData(coinName) {
+            const response = await fetch(`https://api.coingecko.com/api/v3/coins/${coinName}/market_chart?vs_currency=usd&days=30`);
+            const data = await response.json();
+            return data;
+        }
+
+        // Function to render data on the page
+        async function renderData(coinName) {
+            try {
+                const coinData = await fetchMarketData(coinName);
+                const coinChart = await fetchMarketChartData(coinName);
+
+                // Render coin data
+                document.getElementById('coinData').innerHTML = `
+                    <h2>${coinData.name} (${coinData.symbol.toUpperCase()})</h2>
+                    <p>Current Price: $${coinData.market_data.current_price.usd}</p>
+                    <p>Market Cap: $${coinData.market_data.market_cap.usd}</p>
+                    <p>24h Change: ${coinData.market_data.price_change_percentage_24h.toFixed(2)}%</p>
+                `;
+
+                // Render coin chart
+                renderChart(coinChart.prices);
+
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Function to render chart using Chart.js
+        function renderChart(prices) {
+            const ctx = document.getElementById('coinChart').getContext('2d');
+            const labels = prices.map(price => new Date(price[0]).toLocaleDateString());
+            const data = prices.map(price => price[1]);
+
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Price (USD)',
+                        data: data,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: 'time',
+                            time: {
+                                unit: 'day'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Price (USD)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initial rendering
+        const initialCoinName = "bitcoin";
+        renderData(initialCoinName);
+    </script>
+</body>
+</html>

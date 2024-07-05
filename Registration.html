@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="registration-form">
+    <h2>User Registration</h2>
+    <form action="#" method="post">
+      <div class="input-group">
+        <label for="username">Full Name</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="input-group">
+        <label for="username">Last Name</label>
+        <input type="text" id="lastname" name="lastname" required>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="input-group">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+      </div>
+      <div class="input-group">
+        <label for="confirm-password">Mobile No.</label>
+        <input type="number" id="number" name="number" required>
+      </div>
+      <div class="input-group">
+        <label>Select Gender</label>
+        <label for="male">Male</label>
+        <input type="radio" id="male" class="radio-button" name="gender" value="male">
+        <label for="female">Female</label>
+        <input type="radio" id="female" class="radio-button" name="gender" value="female">
+      </div>
+        <div class="input-group">
+            <label for="resume">Upload Resume</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+        
+          </div>
+        
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</body>
+</html>

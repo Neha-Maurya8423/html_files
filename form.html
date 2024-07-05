@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>User Registration</h2>
+        <form id="registrationForm" action="#" method="post" onsubmit="return handleRegistration()">
+            <div class="input-name">
+                <input type="text" id="firstName" placeholder="First Name" class="name" required>
+                <span>
+                    <input type="text" id="lastName" placeholder="Last Name" class="name" required>
+                </span>
+            </div>
+            <div class="input-name">
+                <input type="email" id="email" placeholder="Email" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <input type="password" id="password" placeholder="Password" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <input type="text" id="college" placeholder="College Name" class="text-name" required>
+            </div>
+            <div class="input-name">
+                <label for="male">Male</label>
+                <input type="radio" id="male" class="radio-button" name="gender" required>
+                <label for="female">Female</label>
+                <input type="radio" id="female" class="radio-button" name="gender" required>
+            </div>
+            <div class="input-name">
+                <select id="country" required>
+                    <option value="">Select a country</option>
+                    <option value="India">India</option>
+                    <option value="US">US</option>
+                    <option value="Italy">Italy</option>
+                </select>
+            </div>
+            <div class="input-name">
+                <label>Upload Resume</label>
+                <input type="file" id="resume" class="name-text" accept=".pdf,.doc,.docx" required>
+            </div>
+            <div class="input-name">
+                <input type="checkbox" id="acceptTerms" class="check-button" required>
+                <label for="acceptTerms">Accept the terms and conditions</label>
+            </div>
+            <div class="input-name">
+                <input type="submit" class="button" value="Registration">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function handleRegistration() {
+            // Retrieve form input values
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const college = document.getElementById('college').value.trim();
+            const country = document.getElementById('country').value;
+            const resume = document.getElementById('resume').value.trim();
+            const acceptTerms = document.getElementById('acceptTerms').checked;
+
+            // Perform validations
+            if (firstName === '' || lastName === '' || email === '' || password === '' || confirmPassword === '' || college === '' || country === '' || resume === '' || !acceptTerms) {
+                alert('Please fill in all required fields.');
+                return false; // Prevent form submission
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return false; // Prevent form submission
+            }
+
+            // Other validations can be added as needed
+
+            // If all validations pass, you can proceed with form submission
+            // Here, you can add code to submit the form data to the server or perform any other actions
+            alert('Form submitted successfully!');
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+
+</html>

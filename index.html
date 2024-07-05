@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-button
+        {
+            color: aqua;
+        }
+    </style>
+    <link rel="stylesheet" href="css/styleprectice.css"></link>
+</head>
+<body>
+
+   <button  class="bag" onclick="card()">Add to Bag</button>
+    <button  class="wish"onclick="cardQuantity=cardQuantity-1;document.querySelector('#card-summary').innerText=`your bag has  ${cardQuantity} items`;">move to Wishlist</button>
+    <button  class="sale"onclick="cardQuantity=cardQuantity+2;document.querySelector('#card-summary').innerText=`your bag has  ${cardQuantity} items`;">Add 1+1 sale item</button>
+    <!--<button  id="click-me">click</button>
+    <button  class="my-button">click me</button>
+    <button  class="my-button">click me2</button>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius qui minima ad voluptates quod beatae omnis quibusdam deserunt perspiciatis nemo?</p>
+   <script></script> -->
+   <h1  id="card-summary"></h1>
+   <script>
+   let cardQuantity=0;
+   document.querySelector('#card-summary').innerText=`your bag has  ${cardQuantity} items`;
+   function card()
+   {
+    cardQuantity=cardQuantity+1;
+    document.querySelector('#card-summary').innerText=`your bag has  ${cardQuantity} items`;
+   }
+   </script>
+</body>
+</html>

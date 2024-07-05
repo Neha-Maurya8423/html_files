@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curreny convertor</title>
+</head>
+
+<body>
+<label> Enter the Currency</label>
+<input type="text" id="convert-currency">
+    <label for="username">Enter you total amount to convert:</label>
+    <input type="number" id="currency-value" name="username">
+    <button onclick="loadWeatherData()"> fetch data</button>
+
+    <div>
+        <h3 id="data1"></h3>
+       
+        <h3 id="data2"></h3>
+        <table id="currency-table">
+            <tr>
+                <th>Currency</th>
+                <th>Rate</th>
+            </tr>
+        </table>  
+    </div>
+    
+
+</body>
+<script>
+    function loadWeatherData(){
+        baseCurrency = document.getElementById("convert-currency").value;
+        const apiUrl = `https://open.er-api.com/v6/latest/${baseCurrency}`;
+        document.getElementById("data1").innerHTML= `Base Currency: ${baseCurrency}`
+        fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.time_last_update_utc)
+            document.getElementById("data2").innerHTML= `Last updated at: ${data.time_last_update_utc}`
+
+            input_amount = document.getElementById('currency-value').value;
+            for (let key in data.rates) {
+                document.getElementById("currency-table").innerHTML += `<tr> <td>${key} </td> <td>${data.rates[key]*input_amount} </td></tr>`
+            }
+            // Handle the weather data as needed
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+        });
+
+    }
+</script>
+
+</html>

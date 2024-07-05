@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css"></link>
+    <title>Calculator</title>
+    
+
+</head>
+<body>
+   <div class="calculator-body">
+  <input type="text" class="display" readonly>
+  <div class="button-container">
+    <button class="button"onclick="C()">c</button>
+    <button class="button" onclick="one()">1</button>
+    <button class="button"onclick="two()">2</button>
+    <button class="button"onclick="plus()">+</button>
+    <button class="button"onclick="three()">3</button>
+    <button class="button"onclick="four()">4</button>
+    <button class="button"onclick="minus()">-</button>
+    <button class="button"onclick="five()">5</button>
+    <button class="button"onclick="six()">6</button>
+    <button class="button"onclick="multiply()">*</button>
+    <button class="button"onclick="seven()">7</button>
+    <button class="button"onclick="eight()">8</button>
+    <button class="button"onclick="divid()">/</button>
+    <button class="button"onclick="equal()">=</button>
+    <button class="button"onclick="nine()">9</button>
+    <button class="button"onclick="zero()">0</button>
+    <button class="button"onclick="dot()">.</button>
+    
+   
+    
+  </div>
+
+   </div> 
+   <Script>
+     let CurrentDisplay='';
+     document.querySelector(".display").value=CurrentDisplay;
+     function C()
+     {
+        CurrentDisplay=''; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function one()
+     {
+        CurrentDisplay+=1; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function two()
+     {
+        CurrentDisplay+=2; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function plus()
+     {
+        CurrentDisplay+='+'; 
+        document.querySelector(".display").value=CurrentDisplay;
+     } function three()
+     {
+        CurrentDisplay+=3; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function four()
+     {
+        CurrentDisplay+=4; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function minus()
+     {
+        CurrentDisplay+='-'; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function five()
+     {
+        CurrentDisplay+=5; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function six()
+     {
+        CurrentDisplay+=6; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function multiply()
+     {
+        CurrentDisplay+='*'; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function seven()
+     {
+        CurrentDisplay+=7; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function eight()
+     {
+        CurrentDisplay+=8; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+    
+     function divid()
+     {
+        CurrentDisplay+='/'; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function equal()
+     {
+        
+        CurrentDisplay=eval(CurrentDisplay); 
+             document.querySelector(".display").value=CurrentDisplay;
+     }
+     function nine()
+     {
+        CurrentDisplay+=9; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function zero()
+     {
+        CurrentDisplay+=0; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+     function dot()
+     {
+        CurrentDisplay+='.'; 
+        document.querySelector(".display").value=CurrentDisplay;
+     }
+    
+   </Script>
+</body>
+</html>

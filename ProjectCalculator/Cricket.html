@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creket Game</title>
+</head>
+<body>
+<h1>Bat Ball Stump Game</h1>
+    <div>
+        <button onclick="Bat_fun()">Bat</button>
+        <button onclick="Ball_fun()">Ball</button>
+        <button>Stump</button>
+    </div>
+    <script>
+        function Bat_fun()
+        {
+            console.log('user chioce bat')
+             let computerchoice; 
+         let randum=Math.random()*3;
+         if(randum>0 && randum<=1)
+         {
+            computerchoice='Bat';
+            console.log('computer chioce bat');
+          } 
+          else if(randum>1 && randum<=2)
+            {
+                computerchoice='Ball';
+                console.log('computer chioce Ball')
+            }
+           
+            else 
+            { 
+                computerchoice='stump';
+                console.log('computer chioce Ball')
+            }
+            const computerchoicemsg=(`computer choice is ${computerchoice}`);
+            let resultmsg;
+            if(computerchoice==='Ball')
+            {
+                resultmsg='user win';
+            }
+            else if(computerchoice==='bat')
+            {
+                resultmsg=`It's tie`;
+            }
+            else if(computerchoice==='stump')
+            {
+                resultmsg=`computer is won`;
+            }
+            alert(`you have chosen Bat.computer chosen ${computerchoice}Result ${resultmsg}`);
+         
+        }
+    </script>
+</body>
+</html>

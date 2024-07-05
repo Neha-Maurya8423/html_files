@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curreny convertor</title>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body>
+    <button class="btn-success" onclick="fetchCovidData()"> fetch data</button>
+
+   
+    <div class="container-fliud">
+        <div class="table-responsive-md">
+          <div class="row">
+            <h2 style="text-align: center; border-bottom-right-radius: 2px solid gray;">Geting the covid data updates</h2>
+            
+            <div class="col-2"></div>
+            <div class="col-8">
+              <table class="table table-data table-hover table-striped table-border  ">
+                <thead>
+                    <th>SN.</th>
+                    <th>state</th>
+                    <th>active</th>
+                    <th>confirmed</th>
+                    <th>deaths</th>
+                    <th>lastupdatedtime</th>
+                    </thead>
+                <tbody class="table-body">
+                 
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+
+
+    
+    <!-- <div class=" container data1">
+        <table class="table table-data table-hover ">
+        <tr>
+            <th>statewise</th>
+            <th>active</th>
+            <th>confirmed</th>
+            <th>deaths</th>
+            <th>lastupdatedtime</th>
+        </tr>
+    </table>
+    </div> -->
+
+
+
+    
+   
+</body>
+<script>
+   function fetchCovidData() {
+    const apiUrl = 'https://data.covid19india.org/data.json';
+
+    fetch(apiUrl)
+        .then(response => {
+            console.log(response.cases_time_series)
+            console.log(response.statewise)
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data. Status code: ${response.cases_time_series}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Process the fetched data here
+            console.log(data)
+            console.log(data.cases_time_series)
+            for(let key in data.statewise
+)
+            {document.querySelector(".table-body").innerHTML+=`<tr><td>${key}</td><td> ${data.statewise
+[key].state}</td><td> ${data.statewise
+[key].active}</td><td>${data.statewise
+[key].confirmed}</td><td>${data.statewise
+[key].deaths}</td><td>${data.statewise
+[key].lastupdatedtime}</td></tr>`
+
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+}
+</script>
+</html>

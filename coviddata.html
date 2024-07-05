@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="data">
+        <button  onclick="fetchdata()">click</button>
+        <table id="covidData">
+        <tr>
+            <th>dailyconfirmed</th>
+            <th>dailydeceased</th>
+            <th>date</th>
+            <th>totalconfirmed</th>
+        </tr>
+        </table>
+    </div>
+    <script>
+        function fetchdata()
+        {
+            const apiUrl = 'https://api.coingecko.com/api/v3/global';
+            fetch(apiUrl)
+            .then(response=>{
+            return response.json()})
+            .then(data=>
+            {
+                console.log(data);
+                console.log(data.cases_time_series);
+                for(let key in data.cases_time_series)
+                {
+                    document.getElementById("covidData").innerHTML+=`<tr><td>${key}</td><td>${data.cases_time_series[key].dailyconfirmed}</td><td>${data.cases_time_series[key].dailydeceased}</td><td>${data.cases_time_series[key].date}</td><td>${data.cases_time_series[key].totalconfirmed}</td></tr>`}
+            })
+            .catch(error=>
+            {
+                console.error('Error fetching weather data:', error);
+            })
+        }
+
+    </script>
+</body>
+</html>
